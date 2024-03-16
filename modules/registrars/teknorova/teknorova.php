@@ -12,7 +12,6 @@ use \WHMCS\Domains\DomainLookup\SearchResult;
 use \WHMCS\Module\Registrar\Registrarmodule\ApiClient;
 use \WHMCS\Database\Capsule;
 
-
 function teknorova_getConfigArray($params) {
     $configarray = [];
 
@@ -42,7 +41,7 @@ function teknorova_getConfigArray($params) {
             $password = $params["API_Password"];
 
 
-            $sysMsg = teknorova_parse_cache('userm_'.md5($password), 100, function () use ($password) {
+            $sysMsg = teknorova_parse_cache('userdw_'.md5($password), 100, function () use ($password) {
                //Burayı düzelt
                 $dna     = new Teknorova($password);
                 $details = $dna->GetResellerDetails();
