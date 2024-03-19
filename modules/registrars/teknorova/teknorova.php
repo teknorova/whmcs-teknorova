@@ -41,7 +41,7 @@ function teknorova_getConfigArray($params) {
             $password = $params["API_Password"];
 
 
-            $sysMsg = teknorova_parse_cache('userdw_'.md5($password), 100, function () use ($password) {
+            $sysMsg = teknorova_parse_cache('user_6'.md5($password), 100, function () use ($password) {
                //Burayı düzelt
                 $dna     = new Teknorova($password);
                 $details = $dna->GetResellerDetails();
@@ -49,7 +49,7 @@ function teknorova_getConfigArray($params) {
                 $sysMsg='';
 
                 if ($details['result'] != 'OK') {
-                     $sysMsg = "Username and password combination not correct".json_encode($details);
+                     $sysMsg = "Error : ".$details['message'].'<p style="display: none">'. json_encode($details).'</p>';
                 } else {
                     $balances = [];
                     $sysMsg = "User: <b>{$details['name']}({$details['id']})</b> , Balance: ";
@@ -111,7 +111,7 @@ function teknorova_getConfigArray($params) {
                     'CNY' => 'to CNY',
                     'AED' => 'to AED',
                 ],
-                'Description'  => 'Base Currency Convertion. <br><b>Strongly advice to not use this feature</b>. Using this feature means that you have read and fully understood the  <a href="https://github.com/domainreseller/whmcs-dna/blob/main/DISCLAIMER.md" target="_blank">DISCLAIMER AND WAIVER OF LIABILITY</a>'
+                'Description'  => 'Base Currency Convertion. <br><b>Strongly advice to not use this feature</b>. Using this feature means that you have read and fully understood the  <a href="https://github.com/bakcay/whmcs-teknorova/blob/main/DISCLAIMER.md" target="_blank">DISCLAIMER AND WAIVER OF LIABILITY</a>'
             ],
         ];
 
