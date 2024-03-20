@@ -242,7 +242,7 @@ class Teknorova {
      */
     public function SaveContacts($DomainName, $Contacts) {
 
-        $save_contact = $this->request('put','domain/contact/'.$DomainName,[
+        $save_contact = $this->request('POST','domain/contact/'.$DomainName,[
             'contacts'=>$Contacts
         ]);
 
